@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv")
 dotenv.config()
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 const http = require("http").Server(app)
 const path = require("path");
 const hbs = require("hbs");
@@ -108,7 +108,7 @@ app.post("/login", async(req,res)=>{
       const urlemail = await Client.findOne({email: email});
       const ismail = await bcrypt.compare(password , urlemail.password);
     
-      const token = await urlemail.genrateAuthToken()
+      const token = await urlemail?.genrateAuthToken()
       console.log("the token part = ",token)
       
       res.cookie("jwt",token,{
@@ -155,6 +155,6 @@ io.on("connection", socket =>{
 
 
 
-http.listen(port,"192.168.9.165",()=>{
+http.listen(port,()=>{
     console.log(`server success fully run ${port}`)
 })

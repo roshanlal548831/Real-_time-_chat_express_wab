@@ -64,6 +64,8 @@ clear: both;
     border: 2px solid black;
     height: 34px;
     font-size: large;
+    color: black;
+    background-color: red;
 }
 .navigation{
     /* border: 2px solid black; */
