@@ -105,6 +105,7 @@ app.post("/login", async(req,res)=>{
       const password = req.body.password;
       const email = req.body.email;
       const urlemail = await Client.findOne({email: email});
+      
       const ismail = await bcrypt.compare(password , urlemail.password);
     
       const token = await urlemail?.genrateAuthToken()

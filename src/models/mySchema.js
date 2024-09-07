@@ -55,6 +55,6 @@ clientSchema.pre("save", async function(next){
      next()
 })
 
-const Client = new mongoose.model("client",clientSchema);
+const Client = mongoose.models.user || mongoose.model("user",clientSchema);
 
 module.exports = Client;
