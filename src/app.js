@@ -50,8 +50,12 @@ app.get("/logout",auth, async(req,res)=>{
             return currentElement.token !== req.token
         })
         // req.user.tokens = [];
+       const token = await req.cookies?.jwt
+       if(token){
+           res.cookie("jwt","",{maxAge:0});
+       }else{
 
-        res.clearCookie("jwt");
+       }
 
 
         console.log("logout")
@@ -60,7 +64,7 @@ app.get("/logout",auth, async(req,res)=>{
        res.render("login")
 
      } catch (error) {
-        res.status(401).send(error)
+        // res.status(401).send(error)
      }
 });
 

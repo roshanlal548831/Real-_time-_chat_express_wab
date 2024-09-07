@@ -6,9 +6,9 @@ const auth = async(req,res,next)=>{
   if(!token){
     return res.render("login")
   }else{
-    const varifyUser = jwt.verify(token,process.env.SECRET_KEY);
+    const varifyUser = jwt?.verify(token,process.env?.SECRET_KEY);
     console.log(varifyUser)
-    const user = await Client?.findOne({_id:varifyUser._id});
+    const user = await Client?.findOne({_id:varifyUser?._id});
     console.log(user);
   
     req.token = token;
