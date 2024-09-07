@@ -2,14 +2,13 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv")
 dotenv.config()
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 const http = require("http").Server(app)
 const path = require("path");
 const hbs = require("hbs");
 require("./db/conn");
 const Client = require("./models/mySchema");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken")
 const cookiesParser = require("cookie-parser")
 const auth = require("./middleware/auth")
 
